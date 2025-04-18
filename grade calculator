@@ -1,0 +1,35 @@
+import numpy as np
+import math as m
+import mpmath as mp
+from scipy import constants as c
+
+hw = float(input("HW average after drop (0-100): "))
+exam = float(input("Exam average after drop (0-100): "))
+insta = float(input("Attendance (Instapoll) average after drop (0-100): "))
+final = float(input("Final score (0-100): "))
+extra = float(input("Number of bonus sessions attended (up to 10): "))
+quiz = float(input("Quiz average (OUT OF 10): "))
+worksheet = float(input("Worksheet average (OUT OF 10): "))
+
+letter = [
+    (90, "A"),
+    (85, "A-"),
+    (80, "B+"),
+    (75, "B"),
+    (70, "B-"),
+    (65, "C+"),
+    (60, "C"),
+    (55, "C-"),
+    (50, "D+"),
+    (45, "D"),
+    (40, "D-")
+]
+
+grade = (hw * 0.2) + (exam * 0.3) + (insta * 0.2) + (final * 0.2) + (quiz * 0.5) + (worksheet * 0.5) + (extra * 0.3)
+
+for threshold, letter in letter:
+    if grade >= threshold:
+        print(f"{grade:.3f} ({letter})")
+        break
+else:
+    print(f"{grade:.3f}... really bro?")
